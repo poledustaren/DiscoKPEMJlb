@@ -1,0 +1,10 @@
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\obj\Debug\Study.csprojResolveAssemblyReference.cache
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\obj\Debug\Study.Properties.Resources.resources
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\obj\Debug\Study.csproj.GenerateResource.Cache
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\bin\Debug\Study.exe.config
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\bin\Debug\Study.exe
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\bin\Debug\Study.pdb
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\obj\Debug\Study.exe
+c:\users\dustaren\documents\visual studio 2017\Projects\Study\Study\obj\Debug\Study.pdb
+C:\Users\dustaren\Documents\Visual Studio 2017\Projects\Study\Study\obj\Debug\Study.Form1.resources
+C:\Users\dustaren\Documents\Visual Studio 2017\Projects\Study\Study\obj\Debug\Study.csproj.CoreCompileInputs.cache
