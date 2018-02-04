@@ -111,7 +111,7 @@ namespace Study
             Options.GraphicsObject.Clear(DefaultBackColor);
             var currentPoint = new CoorinateFloat((float)Size.Width / 2, (float)Size.Height / 2);
             var coordsList = Function2Task(currentPoint);
-            DrawFigure(coordsList, _options.MyPen1);
+            DrawFigureTask2(coordsList, _options.MyPen1);
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -266,9 +266,9 @@ namespace Study
             var goodWith = Size.Width - OldSize.Width;
             var goodHeight = Size.Height - OldSize.Height;
 
-            var haveA = int.TryParse(task2fromA.Text, out int a);
-            var haveB = int.TryParse(task2toB.Text, out int b);
-            var haveC = int.TryParse(task2constC.Text, out int c);
+            var haveA = float.TryParse(task2fromA.Text, out float a);
+            var haveB = float.TryParse(task2toB.Text, out float b);
+            var haveC = float.TryParse(task2constC.Text, out float c);
 
             var coordinates = new List<CoorinateFloat>();
 
@@ -277,17 +277,17 @@ namespace Study
            
             var dot = new CoorinateFloat(centerPoint);
 
-            for (var i = a; i <= b; i++)
+            for (float i = a; i <= b; i=(float)Math.Round(i+1f/100f,2))
             {
                 
-                if (i == 0 | (i + 1) == 0)
+                if (i == 0 || (i + 1) == 0)
                 {
                     coordinates.Add(dot.Coordinate(0, 0,true));
                 }
                 else
                 {
-                    var y = (c * (i * i) - 1) / (i + 1) + (1 / i);
-                    var x = i;
+                    var y = (c * (i * i) - 1) / (i + 1) + (1 / i)*20;
+                    var x = i*20;
                     coordinates.Add(dot.Coordinate(x, y));
                 }
               
@@ -320,8 +320,28 @@ namespace Study
                     fromPoint = toPoint;
                     continue;
                 }
+                var point =new PointF(fromPoint.ForDrawX, fromPoint.ForDrawY);
+                var pointTo = new PointF(toPoint.ForDrawX, toPoint.ForDrawY);
+                Options.GraphicsObject.DrawLine(pen, point, pointTo);
+                fromPoint = toPoint;
+            }
+        }
+        public void DrawFigureTask2(List<CoorinateFloat> points, Pen pen)
+        {
+            var goodWith = Size.Width / OldSize.Width;
 
-                Options.GraphicsObject.DrawLine(pen, fromPoint.ForDrawX, fromPoint.ForDrawY , toPoint.ForDrawX  , toPoint.ForDrawY  );
+            var fromPoint = points.First();
+
+            foreach (var toPoint in points)
+            {
+                if (toPoint == fromPoint || toPoint.BadPoint || fromPoint.BadPoint)
+                {
+                    fromPoint = toPoint;
+                    continue;
+                }
+                var point = new PointF(fromPoint.ForDrawX, fromPoint.ForDrawY);
+                var pointTo = new PointF(toPoint.ForDrawX, toPoint.ForDrawY);
+                Options.GraphicsObject.DrawLine(pen, point, pointTo);
                 fromPoint = toPoint;
             }
         }
